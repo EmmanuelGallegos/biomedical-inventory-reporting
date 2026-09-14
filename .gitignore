@@ -1,0 +1,13 @@
+# All workbooks stay local until an independent synthetic output is reviewed.
+*.xlsx
+*.xlsm
+*.xls
+.env
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+private_data/
+.DS_Store
+Thumbs.db
