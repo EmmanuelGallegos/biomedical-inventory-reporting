@@ -12,7 +12,9 @@ This is a reporting and data-transformation project, not a machine-learning proj
 
 ## Public demonstration
 
-[Open the guided notebook](notebooks/biomedical_inventory_reporting.ipynb).
+[Open the V3 notebook](notebooks/biomedical_inventory_reporting_v3.ipynb) · [Previous V2](notebooks/biomedical_inventory_reporting.ipynb).
+
+V3 adds an embedded useful-life lookup, unmatched-description coverage, and reconciliation of the saved workbook. The original company catalogue is excluded; two fictional reference values demonstrate the functionality. See [version notes](docs/versions.md).
 
 The notebook defaults to a fictional 12-record example. It creates a consolidated sheet and separate functional-unit sheets. One valid inventory row represents one asset; a quantity column is not used. Brands and models are counted separately.
 
@@ -27,7 +29,7 @@ pip install -r requirements.txt
 jupyter notebook
 ```
 
-Open the notebook and run all cells. Demo mode generates `synthetic_inventory.xlsx` and `demo_inventory_report.xlsx` locally. In Google Colab, install pandas and openpyxl if needed, then run the notebook directly.
+Open the notebook and run all cells. V3 demo mode generates `synthetic_inventory_v3.xlsx` and `demo_inventory_report_v3.xlsx` locally. In Google Colab, install pandas and openpyxl if needed, then run the notebook directly.
 
 ## Transformation rules
 
@@ -38,9 +40,9 @@ Open the notebook and run all cells. Demo mode generates `synthetic_inventory.xl
 - Keep distinct brand/model combinations separate.
 - Do not deduplicate rows automatically: repeated descriptions may represent distinct assets.
 - Reconcile valid input counts with grouped totals.
-- Keep unavailable installation and useful-life fields blank.
+- Keep unavailable installation fields blank; V3 assigns useful life only on normalized exact description matches.
 
-The public copy is adapted from the reviewed V2 notebook. Organization-specific unit mappings, original outputs, and notebook author metadata are removed.
+Both public copies are adapted from reviewed source notebooks. Organization-specific unit mappings, original outputs, and notebook author metadata are removed.
 
 ## Scope and status
 
@@ -49,7 +51,7 @@ The public copy is adapted from the reviewed V2 notebook. Organization-specific 
 | Business context and original V2 grouping logic | Reviewed |
 | Fictional demonstration notebook | Published |
 | Python execution and workbook inspection | Pending |
-| Useful-life reference dictionary | Not implemented in this V2 adaptation |
+| Useful-life reference dictionary | V3 public example published; original private catalogue excluded |
 | Actual inventories or client reports | Not published |
 | Measured time savings | Not claimed |
 
@@ -67,4 +69,4 @@ No real inventory, asset serial numbers, customer identity, company name, or ori
 
 ## Limitations
 
-This repository is a portfolio demonstration in validation, not a production release. The V2 classification grouping uses the most frequent non-empty value. Empty fields are not inferred. A source-specific useful-life table and other business rules require a separate approved implementation.
+This repository is a portfolio demonstration in validation, not a production release. The V2 classification grouping uses the most frequent non-empty value. Empty fields are not inferred. The V3 fictional lookup values are demonstration assumptions, not company policy or biomedical guidance. A private approved catalogue is required for real use.
